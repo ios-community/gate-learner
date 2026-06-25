@@ -1,0 +1,3 @@
+[default]
+skip-clean = true
+out = ["Html"]
