@@ -9,7 +9,14 @@ use gate_learner::{
     error::GateLearnerError,
 };
 
+#[cfg(feature = "dhat-heap")]
+#[global_allocator]
+static ALLOC: dhat::Alloc = dhat::Alloc;
+
 fn main() -> Result<(), GateLearnerError> {
+    #[cfg(feature = "dhat-heap")]
+    let _profiler = dhat::Profiler::new_heap();
+
     let args = Args::parse();
     run_app(&args)
 }

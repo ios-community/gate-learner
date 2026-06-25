@@ -1,4 +1,6 @@
 /target
+dhat-heap.json
+heap-profile.svg
 problem.txt
 source.txt
 tarpaulin-report.html

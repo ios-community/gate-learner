@@ -63,6 +63,15 @@ jobs:
       - name: Run tests (No Default Features)
         run: cargo test --no-default-features
 
+      - name: Run Memory Profiler
+        run: cargo run --release --bin profile_mlp --features dhat-heap
+
+      - name: Upload Rust DHAT Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: rust-dhat-report
+          path: dhat-heap.json
+
   coverage:
     name: Code Coverage
     runs-on: ubuntu-latest

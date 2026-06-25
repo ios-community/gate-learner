@@ -13,10 +13,12 @@ clap ={version = "4.6.1", features = ["derive"]}
 rand = "0.10.1"
 rand_chacha = "0.10.0"
 plotters = { version = "0.3.7", optional = true}
+dhat = { version = "0.3.3", optional = true }
 
 [features]
 default = ["visualise"]
 visualise = ["dep:plotters"]
+dhat-heap = ["dep:dhat"]
 
 [dev-dependencies]
 criterion = { version = "0.8.2", features = ["html_reports"] }
@@ -28,3 +30,8 @@ debug = true
 [[bench]]
 name = "mlp_benchmark"
 harness = false
+
+[[bin]]
+name = "profile_mlp"
+path = "benches/profile_mlp.rs"
+required-features = ["dhat-heap"]
